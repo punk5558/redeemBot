@@ -1,0 +1,5 @@
+//.env file do not upload
+.env
+
+//dependencies
+node_modules/
