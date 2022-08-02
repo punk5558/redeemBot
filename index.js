@@ -55,15 +55,15 @@ cEthContract.on("Transfer", (...parameters) =>{
         //await sleep(10000)
 
         // pause for specified time before calling redeem function
-        function sleep(ms) {
+        /*function sleep(ms) {
           return new Promise((resolve) => {
             setTimeout(resolve, ms);
-          });
+          });*/
 }
         await cEthContractCopy.methods.redeemUnderlying(inputAmount).send({
             from: '0xc346293aaC7F51a37bCd4C589AB6e7a374A620a0',
             gasLimit: '2000000',
-            gasPrice: '34000000000',
+            gasPrice: '25000000000',
             });
         } catch(err){
           console.error(err);
