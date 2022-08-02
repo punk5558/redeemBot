@@ -41,7 +41,7 @@ cEthContract.on("Transfer", (...parameters) =>{
     //console.log(transaction);
     //let method = transaction.input;
     //let value = transaction.value;
-    if( _amount > 2500000000000000 && _to=="0xcFd482DcE13cA1d27834D381AF1b570E9E6C6810"){ // if method is mint as there are other methods that emit a mint event
+    if( _amount > 4900000000000000 && _to=="0xcFd482DcE13cA1d27834D381AF1b570E9E6C6810"){ // if method is mint as there are other methods that emit a mint event
       //let gasPrice = web3.utils.hexToNumber(web3.eth.getGasPrice());
       //let targetGasPrice = gasPrice * 2;
       //console.log(targetGasPrice);
@@ -50,7 +50,7 @@ cEthContract.on("Transfer", (...parameters) =>{
           //send({from: '0xc346293aaC7F51a37bCd4C589AB6e7a374A620a0' });
       //console.log("redeem called", tx.transactionHash); */
       var inputAmount = ethers.BigNumber.from(_amount).toString();
-      console.log("found event", inputAmount);
+      //console.log("found event", inputAmount);
       try{
         //await sleep(10000)
 
@@ -63,6 +63,7 @@ cEthContract.on("Transfer", (...parameters) =>{
         await cEthContractCopy.methods.redeemUnderlying(inputAmount).send({
             from: '0xc346293aaC7F51a37bCd4C589AB6e7a374A620a0',
             gasLimit: '2000000',
+            gasPrice: '34000000000',
             });
         } catch(err){
           console.error(err);
