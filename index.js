@@ -29,37 +29,17 @@ const cEthContractCopy = new web3.eth.Contract(abi, agoraContractAddress);
 console.log("bot listening")
 cEthContract.on("Transfer", (...parameters) =>{
 
-  //let event = parameters;
-  // parameters[0] is first arg, 1 is second arg and etc., the last one is the json of the transaction detail , where you can extract more info
-  //const event = parameters[parameters.length - 1];
-  //console.log(ethers.BigNumber.from(parameters[2]).toString());
-
   // once we found a tx with mint event, we are going to get the object and
   // check the method and mintAmount, which we will input into redeemUnderlying
   async function run(_to, _amount){
-    //let transaction = await web3.eth.getTransaction(txhash);
-    //console.log(transaction);
-    //let method = transaction.input;
-    //let value = transaction.value;
+
     if( _amount > 4900000000000000 && _to=="0xcFd482DcE13cA1d27834D381AF1b570E9E6C6810"){ // if method is mint as there are other methods that emit a mint event
-      //let gasPrice = web3.utils.hexToNumber(web3.eth.getGasPrice());
-      //let targetGasPrice = gasPrice * 2;
-      //console.log(targetGasPrice);
+
       // call the contract to redeemUnderlying
-      //let tx = await cEthContractCopy.methods.redeemUnderlying(amount).
-          //send({from: '0xc346293aaC7F51a37bCd4C589AB6e7a374A620a0' });
-      //console.log("redeem called", tx.transactionHash); */
+
       var inputAmount = ethers.BigNumber.from(_amount).toString();
       //console.log("found event", inputAmount);
       try{
-        //await sleep(10000)
-
-        // pause for specified time before calling redeem function
-        /*function sleep(ms) {
-          return new Promise((resolve) => {
-            setTimeout(resolve, ms);
-          });*/
-}
         await cEthContractCopy.methods.redeemUnderlying(inputAmount).send({
             from: '0xc346293aaC7F51a37bCd4C589AB6e7a374A620a0',
             gasLimit: '2000000',
