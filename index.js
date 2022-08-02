@@ -22,7 +22,7 @@ const network = {
 
 const web3 = new Web3(provider);
 //console.log(abi);
-const provider1 = new ethers.providers.JsonRpcProvider(process.env.HTTP_RPC);
+const provider1 = new ethers.providers.WebSocketProvider(process.env.WSS_RPC);
 const cEthContract = new ethers.Contract(contractAddress, abi, provider1);
 const cEthContractCopy = new web3.eth.Contract(abi, agoraContractAddress);
 
@@ -41,7 +41,7 @@ cEthContract.on("Transfer", (...parameters) =>{
     //console.log(transaction);
     //let method = transaction.input;
     //let value = transaction.value;
-    if( _amount > 5000000000000000 && _to=="0xcFd482DcE13cA1d27834D381AF1b570E9E6C6810"){ // if method is mint as there are other methods that emit a mint event
+    if( _amount > 2500000000000000 && _to=="0xcFd482DcE13cA1d27834D381AF1b570E9E6C6810"){ // if method is mint as there are other methods that emit a mint event
       //let gasPrice = web3.utils.hexToNumber(web3.eth.getGasPrice());
       //let targetGasPrice = gasPrice * 2;
       //console.log(targetGasPrice);
